@@ -15,7 +15,7 @@
 
 ---
 
-![EnvBox Hero](.gemini/antigravity/brain/f4f331d4-953f-47b2-b722-d850fdfc4183/landing_hero_dashboard_1768619724595.png)
+![EnvBox Hero](./public/dashboard-preview.png)
 
 ## ✨ Features
 

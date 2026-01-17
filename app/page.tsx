@@ -49,7 +49,7 @@ export default function LandingPage() {
               <div className="hero-image-container">
                 <Image 
                   src="/dashboard-preview.png"
-                  alt="EnvBox Dashboard Preview"
+                  alt="Env Box Dashboard Preview"
                   width={1000}
                   height={600}
                   className="hero-image"
@@ -120,7 +120,20 @@ export default function LandingPage() {
 
       <footer className="footer">
         <div className="container">
-          <p>&copy; {new Date().getFullYear()} EnvBox. All rights reserved.</p>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <p>&copy; {new Date().getFullYear()} EnvBox. All rights reserved.</p>
+            <a 
+              href="https://github.com/a7medayman6/env-box" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{ color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: 'var(--space-xs)' }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-7.38-4.095-1.485-.21-.555-.555-1.095-1.035-1.455-.855-.585-.03-.57.03-.57.945.06 1.44 1.035 1.44 1.035 1.005 1.71 2.64 1.215 3.285.93.105-.72.39-1.215.705-1.485-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.405.345.765 1.035.765 2.085 0 1.515-.015 2.745-.015 3.105 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              GitHub
+            </a>
+          </div>
         </div>
       </footer>
     </div>
