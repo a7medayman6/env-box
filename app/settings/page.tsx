@@ -320,7 +320,7 @@ export default function SettingsPage() {
                     <th>Name / Email</th>
                     <th>Title</th>
                     <th>Role</th>
-                    <th>Download Permission</th>
+                    <th>Manage Secrets</th>
                   </tr>
                 </thead>
                 <tbody>

@@ -138,18 +138,34 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
     setIsLoading(true);
 
     const token = localStorage.getItem('token');
-    const url = editingVariable
-      ? `/api/projects/${params.id}/variables/${editingVariable._id}`
-      : `/api/projects/${params.id}/variables`;
-    const method = editingVariable ? 'PUT' : 'POST';
+    
+    // Check for duplicate key if adding new
+    let targetId = editingVariable?._id;
+    let targetMethod = editingVariable ? 'PUT' : 'POST';
 
-    const body = editingVariable
+    if (!editingVariable) {
+      const existing = variables.find(v => v.key === formData.key);
+      if (existing) {
+        if (!confirm(`Variable "${formData.key}" already exists. Do you want to overwrite it?`)) {
+          setIsLoading(false);
+          return;
+        }
+        targetId = existing._id;
+        targetMethod = 'PUT';
+      }
+    }
+
+    const url = targetId
+      ? `/api/projects/${params.id}/variables/${targetId}`
+      : `/api/projects/${params.id}/variables`;
+
+    const body = targetId
       ? { value: formData.value, description: formData.description, isCommented: formData.isCommented, isMasked: formData.isMasked }
       : { ...formData, environment };
 
     try {
       const response = await fetch(url, {
-        method,
+        method: targetMethod,
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
@@ -557,6 +573,8 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
                         <button
                           onClick={() => handleDeleteVariable(variable._id)}
                           className="btn btn-danger"
+                          disabled={!membership?.canDownload && membership?.role !== 'admin'}
+                          title={!membership?.canDownload && membership?.role !== 'admin' ? "Permission required" : "Delete variable"}
                         >
                           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <polyline points="3 6 5 6 21 6" />
@@ -631,10 +649,10 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
                       type="checkbox" 
                       checked={formData.isMasked} 
                       onChange={(e) => setFormData({ ...formData, isMasked: e.target.checked })} 
-                      disabled={editingVariable?.isMasked && !membership?.canDownload}
+                      disabled={(!membership?.canDownload && membership?.role !== 'admin') || (editingVariable?.isMasked && !membership?.canDownload)}
                     />
                     <span className="toggle-slider"></span>
-                    <span className="toggle-label">Masked {editingVariable?.isMasked && !membership?.canDownload && '(Immutable)'}</span>
+                    <span className="toggle-label">Masked {(!membership?.canDownload && membership?.role !== 'admin') && '(Permission required)'}</span>
                   </label>
                 </div>
               </div>

@@ -26,9 +26,9 @@ export default function LandingPage() {
           <div className="hero-content">
             <div className="hero-text">
               <span className="badge badge-accent">Secure & Collaborative</span>
-              <h1>Securely Manage Your Team&apos;s Environment Variables</h1>
+              <h1>Manage Your Environment Variables Smarter</h1>
               <p className="lead">
-                The modern, encrypted, and collaborative way to handle .env files across your entire development lifecycle. No more sharing secrets in Slack or plain text.
+                Stop sharing secrets in Slack. Encrypt, manage, and sync your .env files across your team with ease and confidence.
               </p>
               <div className="hero-actions">
                 <button 
@@ -48,9 +48,9 @@ export default function LandingPage() {
             <div className="hero-visual">
               <div className="hero-image-container">
                 <Image 
-                  src="/home/abed/.gemini/antigravity/brain/f4f331d4-953f-47b2-b722-d850fdfc4183/landing_hero_dashboard_1768619724595.png"
+                  src="/dashboard-preview.png"
                   alt="EnvBox Dashboard Preview"
-                  width={800}
+                  width={1000}
                   height={600}
                   className="hero-image"
                   priority
@@ -74,29 +74,29 @@ export default function LandingPage() {
               <div className="feature-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
               </div>
-              <h3>End-to-End Encryption</h3>
-              <p>Your variables are encrypted using AES-256 before they ever leave your browser. Only your team can decrypt them.</p>
+              <h3>Multiple Environments</h3>
+              <p>Manage secrets for Development, Staging, and Production separately. Switch contexts instantly.</p>
             </div>
             <div className="feature-card">
               <div className="feature-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
               </div>
-              <h3>Team Collaboration</h3>
-              <p>Manage projects, environments, and team members with granular roles and permissions. Promote admins and manage download access.</p>
+              <h3>Audit Logs</h3>
+              <p>Track every change. See who added, updated, or deleted a variable and when it happened.</p>
             </div>
             <div className="feature-card">
               <div className="feature-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
               </div>
-              <h3>.env Import & Export</h3>
-              <p>Easily import your existing .env files with override detection. Export variables securely when you need them.</p>
+              <h3>Import & Export</h3>
+              <p>Import your existing .env files in seconds. Export variables to JSON or .env format whenever you need them.</p>
             </div>
             <div className="feature-card">
               <div className="feature-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
               </div>
               <h3>Variable Masking</h3>
-              <p>Mask sensitive keys to prevent accidental exposure. Only authorized users can reveal or unmask values.</p>
+              <p>Sensitive values are masked by default. Only authorized team members can reveal them.</p>
             </div>
           </div>
         </div>
