@@ -1,0 +1,56 @@
+<svg
+  width="240"
+  height="80"
+  viewBox="0 0 240 80"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <!-- Purple gradient -->
+    <linearGradient id="envboxGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A855F7"/>
+      <stop offset="50%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#5B21B6"/>
+    </linearGradient>
+
+    <!-- Soft glow for dark mode -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Icon: Box with env layers -->
+  <g transform="translate(12,16)" filter="url(#glow)">
+    <!-- Box -->
+    <rect
+      x="0"
+      y="0"
+      width="48"
+      height="48"
+      rx="10"
+      fill="url(#envboxGradient)"
+    />
+
+    <!-- Inner layers -->
+    <rect x="12" y="14" width="24" height="4" rx="2" fill="#EDE9FE"/>
+    <rect x="12" y="22" width="18" height="4" rx="2" fill="#DDD6FE"/>
+    <rect x="12" y="30" width="14" height="4" rx="2" fill="#C4B5FD"/>
+  </g>
+
+  <!-- Text -->
+  <text
+    x="80"
+    y="52"
+    font-size="36"
+    font-weight="700"
+    font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif"
+    fill="url(#envboxGradient)"
+    letter-spacing="-0.5"
+  >
+    EnvBox
+  </text>
+</svg>
