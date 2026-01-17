@@ -5,6 +5,9 @@ import Navbar from '@/components/Navbar'
 export const metadata: Metadata = {
   title: 'EnvBox - Environment Variable Manager',
   description: 'Centrally manage environment variables per project and environment',
+  icons: {
+    icon: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({
