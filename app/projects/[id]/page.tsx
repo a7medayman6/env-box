@@ -379,6 +379,16 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
           </div>
           <div style={{ display: 'flex', gap: 'var(--space-sm)' }}>
             <button 
+              onClick={loadAuditLogs} 
+              className="btn btn-secondary"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              History
+            </button>
+            <button 
               onClick={() => handleExport('env')} 
               className="btn btn-secondary"
               disabled={!membership?.canDownload}
@@ -733,22 +743,35 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
 
       {showAuditLog && (
         <div className="modal" onClick={() => setShowAuditLog(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '600px' }}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '800px' }}>
             <h2>Change History</h2>
-            <div style={{ maxHeight: '300px', overflowY: 'auto', marginTop: 'var(--space-md)' }}>
-              <table>
+            <div style={{ maxHeight: '400px', overflowY: 'auto', marginTop: 'var(--space-md)' }}>
+              <table style={{ tableLayout: 'fixed', width: '100%' }}>
                 <thead>
                   <tr>
-                    <th>Variable</th>
-                    <th>Action</th>
-                    <th>User</th>
-                    <th>Time</th>
+                    <th style={{ width: '40%' }}>Variable</th>
+                    <th style={{ width: '20%' }}>Action</th>
+                    <th style={{ width: '25%' }}>User</th>
+                    <th style={{ width: '15%' }}>Time</th>
                   </tr>
                 </thead>
                 <tbody>
                   {auditLogs.map((log) => (
                     <tr key={log._id}>
-                      <td><code>{log.variableKey}</code></td>
+                      <td>
+                        <code 
+                          style={{ 
+                            display: 'block',
+                            maxWidth: '100%',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap'
+                          }}
+                          title={log.variableKey}
+                        >
+                          {log.variableKey}
+                        </code>
+                      </td>
                       <td>
                         <span className={`badge badge-${
                           log.action === 'create' ? 'success' : 
@@ -757,7 +780,9 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
                           {log.action}
                         </span>
                       </td>
-                      <td style={{ fontSize: 'var(--font-size-xs)' }}>{log.userEmail}</td>
+                      <td style={{ fontSize: 'var(--font-size-xs)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={log.userEmail}>
+                        {log.userEmail}
+                      </td>
                       <td style={{ fontSize: 'var(--font-size-xs)' }}>{formatDate(log.timestamp)}</td>
                     </tr>
                   ))}
