@@ -31,11 +31,14 @@ export default function Navbar() {
           }
         })
         .catch(() => {});
+    } else {
+      setTeam(null);
     }
   }, [pathname]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    setTeam(null);
     router.push('/');
   };
 
